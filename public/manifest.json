@@ -1,0 +1,13 @@
+{
+    "manifest_version": 3,
+    "name": "My Extension",
+    "version": "1.0.1",
+    "description": "React chrome extn",
+    "action": {
+        "default_popup": "index.html",
+        "default_title": "Open"
+    },
+    "permissions":[
+        "scripting"
+    ]
+}
