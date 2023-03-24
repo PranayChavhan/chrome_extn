@@ -3,41 +3,33 @@ import axios from "axios";
 
 
 const Login = () => {
+
   const [Email, setEmail] = useState("");
   const [Password, setPassword] = useState("");
-
-
-
 
   const handleSubmit = (e) => {
     console.log("====================================");
     console.log(Email, Password);
     console.log("====================================");
     axios
-    .post("https://peach-violet-rhinoceros.glitch.me/api/v1/student/login", {
-      emailID: Email,
-      password: Password,
-    })
-    .then((res) => {
-      const data = res.data;
-      if (data.success) {
-        console.log("student login successfully");
-        console.log(data);
-
-        sessionStorage.setItem("student", JSON.stringify(data.data));
-
-      } else {
-        alert("invalid");
-      }
-    })
-    .catch((err) => {
-      console.log(err);
-    });
-
+      .post("https://peach-violet-rhinoceros.glitch.me/api/v1/student/login", {
+        emailID: Email,
+        password: Password,
+      })
+      .then((res) => {
+        const data = res.data;
+        if (data.success) {
+          console.log("student login successfully");
+          console.log(data);
+          sessionStorage.setItem("student", JSON.stringify(data.data));
+        } else {
+          alert("invalid");
+        }
+      })
+      .catch((err) => {
+        console.log(err);
+      });
   };
-
-
-
 
   return (
     <section className="text-gray-400 bg-gray-900 body-font min-h-full min-w-[20rem]">
@@ -48,9 +40,7 @@ const Login = () => {
           </h2>
 
           <div>
-            <p className="leading-relaxed mb-5">
-              Login to StudyAI
-            </p>
+            <p className="leading-relaxed mb-5">Login to StudyAI</p>
 
             <div className="mb-10">
               <label for="Email" className="leading-7 text-sm text-gray-400">
@@ -92,7 +82,7 @@ const Login = () => {
               Login
             </button>
             <p className="text-xs mb-5 text-gray-400 text-opacity-90 mt-3">
-              Don't have an account, Please register    
+              Don't have an account, Please register
             </p>
             <button
               type="submit"

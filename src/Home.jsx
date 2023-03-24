@@ -1,4 +1,4 @@
-import React, { useState, useEffect} from "react";
+import React, { useState, useEffect } from "react";
 import Webcam from "react-webcam";
 
 const Home = () => {
@@ -29,16 +29,9 @@ const Home = () => {
     mediaRecorderRef.current.addEventListener(
       "dataavailable",
       handleDataAvailable
-    );  
+    );
     mediaRecorderRef.current.start();
-
-    
   }, [webcamRef, setCapturing, mediaRecorderRef]);
-
-
-
-
-  
 
   const handleDataAvailable = React.useCallback(
     ({ data }) => {
@@ -49,18 +42,13 @@ const Home = () => {
     [setRecordedChunks]
   );
 
-
-
   const handleStopCaptureClick = React.useCallback(() => {
     mediaRecorderRef.current.stop();
     setCapturing(false);
-    
-    setFlag(false);
 
+    setFlag(false);
   }, [mediaRecorderRef, webcamRef, setCapturing]);
 
-
-  
   const handleDownload = React.useCallback(() => {
     if (recordedChunks.length) {
       const blob = new Blob(recordedChunks, {
@@ -75,12 +63,10 @@ const Home = () => {
       a.click();
       window.URL.revokeObjectURL(url);
       setRecordedChunks([]);
-      console.log('====================================');
+      console.log("====================================");
       console.log(blob);
-      console.log('====================================');
-
+      console.log("====================================");
     }
-
   }, [recordedChunks]);
 
   return (
@@ -106,17 +92,22 @@ const Home = () => {
                 You are successfully join the class.
               </p>
 
-
-
-              <Webcam audio={false}  ref={webcamRef} />
+              <Webcam audio={false} ref={webcamRef} />
               {capturing ? (
-                <button className=" text-white m-4 bg-indigo-500 border-0 py-2 px-6 focus:outline-none hover:bg-indigo-600 rounded text-lg" onClick={handleStopCaptureClick}>Close Class</button>
+                <button
+                  className=" text-white m-4 bg-indigo-500 border-0 py-2 px-6 focus:outline-none hover:bg-indigo-600 rounded text-lg"
+                  onClick={handleStopCaptureClick}
+                >
+                  Close Class
+                </button>
               ) : (
-                <button className="text-white m-4 bg-indigo-500 border-0 py-2 px-6 focus:outline-none hover:bg-indigo-600 rounded text-lg" onClick={handleStartCaptureClick}>Join Class</button>
+                <button
+                  className="text-white m-4 bg-indigo-500 border-0 py-2 px-6 focus:outline-none hover:bg-indigo-600 rounded text-lg"
+                  onClick={handleStartCaptureClick}
+                >
+                  Join Class
+                </button>
               )}
-              
-
-
             </div>
           ) : (
             <div>
@@ -147,12 +138,12 @@ const Home = () => {
                 Submit
               </button>
 
-
               {recordedChunks.length > 0 && (
-                <button className="m-4 mx-4" onClick={handleDownload}>Download</button>
+                <button className="m-4 mx-4" onClick={handleDownload}>
+                  Download
+                </button>
               )}
 
-              
               <p className="text-xs text-gray-400 text-opacity-90 mt-3">
                 Lorem, ipsum dolor sit amet consectetur adipisicing elit.
                 Pariatur, repellendus.
