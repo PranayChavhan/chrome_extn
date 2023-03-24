@@ -1,3 +1,5 @@
 use - npm run dev to start the project
 use - npm run build to build the project
 dist is the build folder
+
+copy and past the dist folder to the chrome extensions
